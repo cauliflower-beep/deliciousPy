@@ -2,3 +2,4 @@
 venv
 源代码文件
 __pycache__/
+test/

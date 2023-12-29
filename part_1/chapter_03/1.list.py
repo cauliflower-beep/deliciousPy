@@ -1,3 +1,4 @@
+# 列表元素不需要是同一类型，int和str可以放进同一个列表中
 characters = ['goku', 'conan', 'naruto', 'lufy']
 print(characters)
 print(characters[3])
