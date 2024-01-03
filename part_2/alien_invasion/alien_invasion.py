@@ -17,9 +17,15 @@ class AlienInvasion:
         # 设置类作为属性
         self.settings = Settings()
 
+        # 特定窗口大小
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
-        pygame.display.set_caption("Alien Invasion")
+        # 全屏模式 有问题 pass
+        # self.screen = pygame.display.set_mode(
+        #     (0, 0), pygame.FULLSCREEN)
+        # self.settings.screen_width = self.screen.get_rect().width
+        # self.settings.screen_height = self.screen.get_rect().height
+        # pygame.display.set_caption("Alien Invasion")
 
         self.ship = Ship(self)
 
@@ -32,7 +38,7 @@ class AlienInvasion:
             self._update_screen()
 
     """
-    辅助方法在类中执行任务，但并非通过实例调用
+    辅助方法在类中执行任务，并非通过实例调用
     python中的辅助方法的名称以单个下划线打头
     """
 
@@ -43,19 +49,31 @@ class AlienInvasion:
             if event.type == pygame.QUIT:
                 sys.exit(0)
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
-                    # 向右移动飞船
-                    self.ship.moving_right = True
-                if event.key == pygame.K_LEFT:
-                    # 向右移动飞船
-                    self.ship.moving_left = True
+                self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_RIGHT:
-                    # 停止右移
-                    self.ship.moving_right = False
-                if event.key == pygame.K_LEFT:
-                    # 向右移动飞船
-                    self.ship.moving_left = False
+                self._checkout_keyup_events(event)
+
+    def _check_keydown_events(self, event):
+        """响应按键"""
+        if event.key == pygame.K_RIGHT:
+            # 向右移动飞船
+            self.ship.moving_right = True
+        elif event.key == pygame.K_LEFT:
+            # 向右移动飞船
+            self.ship.moving_left = True
+        # 按q退出游戏 pass
+        # elif event.key == pygame.K_q:
+        #     print("q")
+        #     sys.exit(0)
+
+    def _checkout_keyup_events(self, event):
+        """响应松开"""
+        if event.key == pygame.K_RIGHT:
+            # 停止右移
+            self.ship.moving_right = False
+        if event.key == pygame.K_LEFT:
+            # 向右移动飞船
+            self.ship.moving_left = False
 
     def _update_screen(self):
         """更新屏幕上的图像，并切换到新屏幕"""
