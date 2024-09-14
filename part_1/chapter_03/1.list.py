@@ -1,8 +1,9 @@
 # 列表元素不需要是同一类型，int和str可以放进同一个列表中
-characters = ['goku', 'conan', 'naruto', 'lufy']
+characters = ['goku', 'conan', 'naruto', 'lufy',123]
 print(characters)
 print(characters[3])
 print(characters[-2])
+print(sorted(characters)) # 包含不同元素的列表直接使用sorted会报错
 
 # 大多数列表是动态的，随着程序的运行会进行增删元素
 characters[3] = 'robin'

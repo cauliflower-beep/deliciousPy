@@ -1,5 +1,5 @@
 # range 创建数值列表
-nums = list(range(1, 5))
+nums = list(range(1, 50))
 print(nums)
 
 # 数字列表的操作
